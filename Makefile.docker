@@ -7,7 +7,7 @@ COVERAGE_INFO=target/LINUX_64BIT_COVERAGE/coverage/amcl.info
 define make
 	rm -rf target
 	docker create \
-		--env WINEPREFIX=/tmp/.wine \
+		--env WINEPREFIX=/tmp/.wine --env CC=clang \
 		--name builder \
 		--workdir /src \
 		$(BUILDER_CONTAINER_NAME) sh -c "mkdir -p /tmp/.wine && make $1"
